@@ -38,12 +38,14 @@ AuthRouter.post('/signin', async (req, res) => {
 
     if (!email) {
         return res.status(400).json({
+            success: false,
             error: "Bad Credentials",
             message: "Email Id is missing"
         })
     }
     if (!password) {
         return res.status(400).json({
+            success: false,
             error: "Bad Credentials",
             message: "Password is missing"
         })
@@ -66,6 +68,7 @@ AuthRouter.post('/signin', async (req, res) => {
         // IF no accounts matching send below response
         if (!response) {
             return res.status(404).json({
+                success: false,
                 message: "No accounts found. Create account to continue"
             })
         } else {
@@ -79,11 +82,13 @@ AuthRouter.post('/signin', async (req, res) => {
                         expiresIn: "1h"
                     });
                     return res.status(200).json({
+                        success: true,
                         message: "Login Successfull",
                         token
                     })
                 } else {
                     return res.status(401).json({
+                        success: false,
                         message: "Invalid username or password"
                     })
                 }
@@ -93,6 +98,7 @@ AuthRouter.post('/signin', async (req, res) => {
         }
     } catch (error) {
         return res.status(500).json({
+            success: false,
             message: "Something went wrong",
             error
         })

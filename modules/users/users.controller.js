@@ -28,6 +28,7 @@ UsersRouter.get('/user/:userId', async (req, res) => {
         userId
     } = req.params;
     try {
+        console.log(req.params)
         const response = await User.findOne({
             _id: new Types.ObjectId(userId)
         }); // null/undefined or {}

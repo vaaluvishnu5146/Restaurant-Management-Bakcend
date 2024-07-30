@@ -3,6 +3,7 @@ const product = require('./product.model');
 const {
     Types
 } = require('mongoose');
+const { TokenChecker } = require('../../middleware/AuthGuard');
 
 // 1. Create a Product
 // http://localhost:3000/products/create/
@@ -11,10 +12,12 @@ ProductRouter.post('/create', async (req, res) => {
         const newProduct = new product(req.body);
         await product.create(newProduct);
         return res.status(201).json({
+            success: true,
             message: "product created successfully",
         })
     } catch (error) {
         return res.status(500).json({
+            success: false,
             message: "Error creating product",
             error
         })
@@ -23,7 +26,7 @@ ProductRouter.post('/create', async (req, res) => {
 
 // 2. Get all products
 // http://localhost:3000/products/
-ProductRouter.get('/', async (req, res) => {
+ProductRouter.get('/', TokenChecker, async (req, res) => {
     try {
         const response = await product.find();
         if (response.length > 0) {

@@ -17,6 +17,14 @@ const UserSchema = mongoose.Schema({
     dob: {
         type: Date,
         required: false
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    isSuperAdmin: {
+        type: Boolean,
+        default: false,
     }
 }, {
     timestamps: true
