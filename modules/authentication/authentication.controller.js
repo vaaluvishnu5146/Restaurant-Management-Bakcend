@@ -31,6 +31,7 @@ AuthRouter.post('/create', (req, res) => {
 // Signin api
 // http://localhost:3000/auth/signin
 AuthRouter.post('/signin', async (req, res) => {
+    console.log('HIT')
     const {
         email,
         password
@@ -84,6 +85,7 @@ AuthRouter.post('/signin', async (req, res) => {
                     return res.status(200).json({
                         success: true,
                         message: "Login Successfull",
+                        userId: response._id,
                         token
                     })
                 } else {

@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const {
+    Types
+} = require('mongoose');
 
 const UserSchema = mongoose.Schema({
     name: {
@@ -25,6 +28,10 @@ const UserSchema = mongoose.Schema({
     isSuperAdmin: {
         type: Boolean,
         default: false,
+    },
+    brand: {
+        type: Types.ObjectId,
+        default: null
     }
 }, {
     timestamps: true

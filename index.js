@@ -12,7 +12,7 @@ const server = express();
 server.use(cors());
 
 const config = {
-    port: 3000,
+    port: 3003,
     host: 'localhost'
 };
 

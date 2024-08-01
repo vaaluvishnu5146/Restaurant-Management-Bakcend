@@ -39,6 +39,14 @@ const BrandSchema = mongoose.Schema({
     isOpen: {
         type: Boolean,
         default: false
+    },
+    cuisine: {
+        type: String,
+        required: true
+    },
+    isTrending: {
+        type: Boolean,
+        default: false,
     }
 }, {
     timestamps: true

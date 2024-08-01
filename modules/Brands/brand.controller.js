@@ -45,7 +45,7 @@ BrandRouter.get('/', async (req, res) => {
 })
 
 // 3. Get a brand
-// http://localhost:3000/brands/:brandId
+// http://localhost:3000/brands/brand/:brandId
 BrandRouter.get('/brand/:brandId', async (req, res) => {
     try {
         const {

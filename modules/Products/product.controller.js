@@ -77,13 +77,13 @@ ProductRouter.get('/product/:productId', async (req, res) => {
 
 // 3. Get a products of particular restaurant
 // http://localhost:3000/products/:brandId
-ProductRouter.get('/products/:brandId/', async (req, res) => {
+ProductRouter.get('/:brandId', async (req, res) => {
     try {
         const {
             brandId
         } = req.params;
         const response = await product.find({
-            brandId,
+            brand: new Types.ObjectId(brandId),
         });
         if (response) {
             return res.status(200).json({
